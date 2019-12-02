@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.support.ui import Select
 
 driver = webdriver.Chrome('D:\chromedriver')
-driver.get('file:///D:/LinkedIn%20Trainings/Python%20Testing%20Automation/Ex_Files_Python_Automation_Testing/Exercise%20Files/CH03/03_02/html_code_03_02.html')
+driver.get('file:///D:/LinkedIn%20Trainings/Python%20Testing%20Automation/Python_Automation_Testing/Exercise%20Files/CH03/03_02/html_code_03_02.html')
 
 select = Select(driver.find_element_by_name('numReturnSelect'))
 select.select_by_index(4)

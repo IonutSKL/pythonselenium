@@ -2,7 +2,7 @@ import time
 from selenium import webdriver
 
 driver = webdriver.Chrome('D:\chromedriver')  # Optional argument, if not specified will search path.
-driver.get('file:///D:/LinkedIn%20Trainings/Python%20Testing%20Automation/Ex_Files_Python_Automation_Testing/Exercise%20Files/CH02/html_code_02.html')
+driver.get('file:///D:/LinkedIn%20Trainings/Python%20Testing%20Automation/Python_Automation_Testing/Exercise%20Files/CH02/html_code_02.html')
 
 login_form = driver.find_element_by_id('loginForm')
 print('login form is: ', login_form)
