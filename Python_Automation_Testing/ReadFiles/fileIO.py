@@ -1,10 +1,8 @@
 f = open("inputFile.txt", "r")
-count = 0
+print("The following students are passed the exam: ")
 for line in f:
     line_split = line.split()
-    if int(line_split[1]) > 50:
-        print(str(count) + ": " + line)
-    count += 1
-
+    if line_split[2] == "P":
+        print(line)
 
 f.close()
