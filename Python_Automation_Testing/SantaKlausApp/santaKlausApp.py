@@ -7,11 +7,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 
-emails1 = ['scarlatalinn@gmail.com;', 'andrada.marin5@gmail.com;', 'Dragosdm22@gmail.com;', 'andrei.tenea93@gmail.com;', 'andreea.madalinavulpe@gmail.com;', 'robert.buica@gmail.com;', 'roxana.barran@yahoo.ro;', 'denisa_vatulescu@yahoo.com;', 'alex.dragomir95@yahoo.com;', 'mc@gmail']
-names1 = ['Ionut', 'Andrada', 'Dragos', 'Andrei', 'Andreea', 'Robert', 'Roxana', 'Denisa', 'Alex', 'Cristi']
+emails = ['scarlatalinn@gmail.com;', 'andrada.marin5@gmail.com;', 'Dragosdm22@gmail.com;', 'andrei.tenea93@gmail.com;', 'andreea.madalinavulpe@gmail.com;', 'robert.buica@gmail.com;', 'roxana.barran@yahoo.ro;', 'denisa_vatulescu@yahoo.com;', 'alex.dragomir95@yahoo.com;', 'mc@gmail']
+names = ['Ionut', 'Andrada', 'Dragos', 'Andrei', 'Andreea', 'Robert', 'Roxana', 'Denisa', 'Alex', 'Cristi']
 
-emails = ['scarlatalinn@gmail.com;', 'test2@email.com', 'c']
-names = ['Ionut', 'TEst2name', 'h']
+emails1 = ['scarlatalinn@gmail.com;', 'test2@email.com', 'c']
+names1 = ['Ionut', 'TEst2name', 'h']
 #print(emails)
 
 
@@ -28,12 +28,11 @@ while len(emails) > 0:
     pairs.append(list(pair))
 
 
-print('Pairs:')
-for i in pairs:
-   print(i)
+print('Santa Klaus Match:')
+#for i in pairs:
+ #  print(i)
 for x in pairs:
-    for a in x:
-        print(a)
+    print(x[0], 'will be Santa Klaus for: ', x[1])
 
     '''
 driver = webdriver.Chrome('D:\chromedriver')
