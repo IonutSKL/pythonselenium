@@ -7,11 +7,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 
-emails = ['scarlatalinn@gmail.com;', 'andrada.marin5@gmail.com;', 'Dragosdm22@gmail.com;', 'andrei.tenea93@gmail.com;', 'andreea.madalinavulpe@gmail.com;', 'robert.buica@gmail.com;', 'roxana.barran@yahoo.ro;', 'denisa_vatulescu@yahoo.com;', 'alex.dragomir95@yahoo.com;', 'mc@gmail']
+emails = ['scarlatalinn@gmail.com', 'andrada.marin5@gmail.com', 'dragosdm22@gmail.com', 'andrei.tenea93@gmail.com', 'andreea.madalinavulpe@gmail.com', 'robert.buica@gmail.com', 'roxana.barran@yahoo.ro', 'denisa_vatulescu@yahoo.com', 'alex.dragomir95@yahoo.com', 'christian.cuna89@gmail.com']
 names = ['Ionut', 'Andrada', 'Dragos', 'Andrei', 'Andreea', 'Robert', 'Roxana', 'Denisa', 'Alex', 'Cristi']
 
-emails1 = ['scarlatalinn@gmail.com;', 'test2@email.com', 'c']
-names1 = ['Ionut', 'TEst2name', 'h']
+#emails1 = ['scarlatalinn@gmail.com', 'denisa_vatulescu@yahoo.com']
+#names = ['Ionut', 'Denisa']
 #print(emails)
 
 
@@ -26,7 +26,8 @@ while len(emails) > 0:
     rand2 = pop_random(names)
     pair = rand1, rand2
     pairs.append(list(pair))
-
+#to do
+#def check_pairs(pairs):
 
 print('Santa Klaus Match:')
 #for i in pairs:
@@ -34,9 +35,9 @@ print('Santa Klaus Match:')
 for x in pairs:
     print(x[0], 'will be Santa Klaus for: ', x[1])
 
-    '''
+
 driver = webdriver.Chrome('D:\chromedriver')
-driver.get('https://mail.google.com/mail/u/0/#inbox')
+driver.get('https://mail.google.com/mail/u/0/h/prfn4k4j6fjk/?zy=e&f=1')
 driver.maximize_window()
 
 
@@ -57,33 +58,69 @@ password_button.click()
 #driver.implicitly_wait(15)
 #time.sleep(5)
 
-try:
-    send_button = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id=":45"]/div/div'))
-        )
-    send_button.click()
-finally:
-    print('send button')
-
 """
 WebDriverWait(driver, 15).until(
         EC.presence_of_element_located((By.XPATH, '//*[@id=":9o"]'))
         )"""
-driver.implicitly_wait(15)
-time.sleep(5)
-for email in emails:
-    to_address = driver.find_element_by_xpath('//*[@id=":9o"]').send_keys(email)
 
-driver.implicitly_wait(15)
-subject_email = driver.find_element_by_xpath('//*[@id=":96"]')
-subject_email.send_keys('Santa Klaus Automated')
 
-driver.implicitly_wait(15)
-body_text = driver.find_element_by_xpath('//*[@id=":ab"]')
-body_text.send_keys('Va saluta Santa Klaus Ionutii!')
+def match_emails(email):
+        try:
+            send_button = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located( (By.XPATH, '/html/body/table[3]/tbody/tr/td[1]/table[1]/tbody/tr[1]/td/b/a'))
+            )
+            send_button.click()
+        finally:
+            print('send button')
+        #to_address = driver.find_element_by_xpath('//*[@id=":9o"]')
+        to_address = driver.find_element_by_name('to')
+        to_address.click()
+        to_address.send_keys(email[0])
+        #print('to address here')
+        subject_email = driver.find_element_by_name('subject')
+        subject_email.send_keys('Santa Klaus Automated')
+        #print( 'subject here' )
+        body_text = driver.find_element_by_name( 'body' )
+        body_text.send_keys('You will be Santa Klaus for: ')
+        body_text.send_keys(email[1])
+        #print( 'body text here' )
+        send_button2 = driver.find_element_by_name( 'nvp_bu_send' )
+        send_button2.click()
+        #print( 'send button 2 here' )
 
-driver.implicitly_wait(15)
-send_button2 = driver.find_element_by_xpath('//*[@id=":8w"]')
-send_button2.click()
 '''
+def match_emails2(email):
+    try:
+        send_button = WebDriverWait( driver, 10 ).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/table[3]/tbody/tr/td[1]/table[1]/tbody/tr[1]/td/b/a') )
+        )
+        send_button.click()
+    finally:
+        print( 'send button' )
+    # to_address = driver.find_element_by_xpath('//*[@id=":9o"]')
+    to_address = driver.find_element_by_name( 'to' )
+    to_address.click()
+    to_address.send_keys( email[1] )
+    # print('to address here')
+    subject_email = driver.find_element_by_name( 'subject' )
+    subject_email.send_keys( 'Santa Klaus Automated' )
+    # print( 'subject here' )
+    body_text = driver.find_element_by_name( 'body' )
+    body_text.send_keys( 'You will be Santa Klaus for: ' )
+    body_text.send_keys( email[0] )
+    # print( 'body text here' )
+    send_button2 = driver.find_element_by_name( 'nvp_bu_send' )
+    send_button2.click()
+    # print( 'send button 2 here' )'''
 
+
+def send_emails():
+    for email in pairs:
+        match_emails(email)
+        #match_emails2(email)
+
+
+send_emails()
+
+driver.close()
